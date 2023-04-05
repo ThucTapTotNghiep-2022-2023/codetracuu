@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tracuu"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <StackPanel>
         <Label>Tra cứu thông tin</Label>
         <Grid>
@@ -20,22 +20,22 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Mã Số Xe"/>
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Tên Khách Hàng"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Biển số xe"/>
+            
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Ngày Đăng Kiểm"/>
-            <TextBox Grid.Row="0" Grid.Column="1"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtBiensoxe"/>
 
-            <TextBox Grid.Row="1" Grid.Column="1"/>
-            <DatePicker Grid.Row="2" Grid.Column="1"/>
-            <Button Grid.Row="1" Grid.Column="2" x:Name="btnTracuu" Content="Tra Cứu"/>
+            
+            <DatePicker Grid.Row="2" Grid.Column="1" x:Name="dpNgaydangkiem"/>
+            <Button Grid.Row="1" Grid.Column="2" x:Name="btnTracuu" Content="Tra Cứu" Click="btnTracuu_Click"/>
         </Grid>
-        <DataGrid>
+        <DataGrid x:Name="dg">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Mã số xe" />
-                <DataGridTextColumn Header="Họ và tên"/>
-                <DataGridTextColumn Header="Số điện thoại"/>
-                <DataGridTextColumn Header="Biển số xe"/>
-                <DataGridTextColumn Header="Loai phương tiện"/>
+        
+                <DataGridTextColumn Header="Họ và tên" Binding="{Binding HoVaTen}"/>
+                <DataGridTextColumn Header="Số điện thoại" Binding="{Binding SoDt}"/>
+                <DataGridTextColumn Header="Biển số xe" Binding="{Binding BienSoxe}"/>
+                <DataGridTextColumn Header="Loai phương tiện" Binding="{Binding LoaiXe}"/>
                 
             </DataGrid.Columns>
         </DataGrid>
