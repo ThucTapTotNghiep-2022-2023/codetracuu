@@ -21,11 +21,10 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Tên đăng nhập"/>
 
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Mật khẩu"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Mật khẩu"/>
+
             <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtTen"/>
-
-
-            <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtMatkhau"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtMatkhau"/>
             
         </Grid>
         <Button Grid.Row="1" Grid.Column="2" x:Name="btnDangnhap" Content="Đăng nhập" Click="btnDangnhap_Click"/>
