@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,26 +34,24 @@ namespace tracuu
 
         private void btnDangnhap_Click(object sender, RoutedEventArgs e)
         {
-            Button? btn = sender as Button;
-            FrameworkElement? fe = btn.Parent as FrameworkElement;
 
-            //ComboBox? cmb = fe.FindName("cmbMalop") as ComboBox;
-            TextBox? txtTen = fe.FindName("txtTen") as TextBox;
-            TextBox? txtMatkhau = fe.FindName("txtMatkhau") as TextBox;
-
-            Dangkiemvien x = db.Dangkiemviens.Find(txtTen.Text);
-            Dangkiemvien y = db.Dangkiemviens.Find(txtMatkhau.Text);
-            //tim va cap nhat
-            if (x.TenDangNhap == txtTen.Text && y.MatKhau==txtMatkhau.Text)
-            {
-                MainWindow f = new MainWindow();
-                f.Show();
-            }
-            else
+            string username = txtTen.Text;
+            string password = txtMatkhau.Text;
+            Dangkiemvien user = db.Dangkiemviens.FirstOrDefault(u => u.TenDangNhap == username && u.MatKhau == password);
+            if (user == null)
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu sai");
+                return;
             }
 
+            // thành công
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+
+        
+            Close();
+
+            
         }
     }
 }

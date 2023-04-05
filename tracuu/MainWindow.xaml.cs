@@ -30,39 +30,41 @@ namespace tracuu
 
         private void btnTracuu_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
             string bienSoXe = txtBiensoxe.Text.ToUpper(); // Lấy biển số xe từ TextBox và chuyển về chữ hoa
             DateTime ngayHienTai = DateTime.Now.Date;
 
 
 
-            var ketQua = ds.FirstOrDefault(x => x.MaPtNavigation.BienSoxe == bienSoXe && x.NgayDangkiem == ngayHienTai);
+            var ketQua = db.Lichdangkiems.Where(x => x.MaPtNavigation.BienSoxe == bienSoXe && x.NgayDangkiem == ngayHienTai);
 
-            Lichdangkiem x = db.Lichdangkiems.Find();
             if (ketQua == null)
             {
                 MessageBox.Show("khach hang chưa đăng ký", "Thông báo", MessageBoxButton.OK);
             }
             else
             {
-               
-
-                dg.ItemsSource = db.Phuongtiens.Where(t => t.MaPt == x.MaPt)
+                dg.ItemsSource = db.Phuongtiens.Where(t => t.BienSoxe == bienSoXe )
                 .Join(db.Chuphuongtiens, x => x.MaCpt, y => y.MaCpt, (x, y) => new {
-                    HoVaTen = y.HoVaten,
-                    SoDt = y.SoDt,
-                    bienSoXe = x.BienSoxe,
-                    LoaiPhuongTien = x.LoaiXe
-                   
+                    Hovaten = y.HoVaten,
+                    sodienthoai = y.SoDt,
+                    Biensoxe = x.BienSoxe,
+                    loaixe = x.LoaiXe
+                    //HoVaTen =y.HoVaten,
+
+                    //SoDt = y.SoDt,
+                    //BienSoxe = x.BienSoxe,
+                    //LoaiXe = x.LoaiXe
+
                 }).ToList();
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+           
         }
 
        
         }
     }
-}
+

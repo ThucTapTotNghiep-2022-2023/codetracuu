@@ -32,10 +32,10 @@
         <DataGrid x:Name="dg">
             <DataGrid.Columns>
         
-                <DataGridTextColumn Header="Họ và tên" Binding="{Binding HoVaTen}"/>
-                <DataGridTextColumn Header="Số điện thoại" Binding="{Binding SoDt}"/>
+                <!--<DataGridTextColumn Header="Họ và tên" Binding="{Binding HoVaTen}" />
+                <DataGridTextColumn Header="Số điện thoại" Binding="{Binding SoDt}" />
                 <DataGridTextColumn Header="Biển số xe" Binding="{Binding BienSoxe}"/>
-                <DataGridTextColumn Header="Loai phương tiện" Binding="{Binding LoaiXe}"/>
+                <DataGridTextColumn Header="Loai phương tiện" Binding="{Binding LoaiXe}"/>-->
                 
             </DataGrid.Columns>
         </DataGrid>
